@@ -8,15 +8,18 @@ namespace FirstAttempt
 {
     class Question
     {
-
+       
         public string Body { get; set; }
         public string Answer { get; set; }
+        public string WrongAnswer { get; set; }
         public string Subject { get; set; }
+        
 
         public Question()
         {
             Body = string.Empty;
             Answer = string.Empty;
+            WrongAnswer = string.Empty;
             Subject = "Unlisted";
         }
 

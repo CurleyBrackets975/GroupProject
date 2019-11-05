@@ -24,6 +24,8 @@ namespace FirstAttempt
     {
         public MainWindow()
         {
+
+           
             InitializeComponent();
             
         }
@@ -35,6 +37,13 @@ namespace FirstAttempt
 
         private void hwLstBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
+            //Question subject = new Question();
+            //subject.Subject = comboBox.Text;
+
+            //hwLstBox.Items.Add(subject.ToString());
+
 
         }
     }
