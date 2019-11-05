@@ -7,13 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="generateBtn" Content="Generate" HorizontalAlignment="Left" Margin="684,344,0,0" VerticalAlignment="Top" Width="75" Click="generateBtn_Click"/>
-        <Label x:Name="label" Content="Choose a subject:" HorizontalAlignment="Left" Margin="66,58,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
-        <TextBox x:Name="txtBox2" HorizontalAlignment="Left" Height="28" Margin="220,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="label_Copy" Content="How many questions?" HorizontalAlignment="Left" Margin="66,91,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="220,59,0,0" VerticalAlignment="Top" Width="113" Height="27">
+        <Button x:Name="generateBtn" Content="Generate" HorizontalAlignment="Left" Margin="47,332,0,0" VerticalAlignment="Top" Width="136" Click="generateBtn_Click" Height="35"/>
+        <Label x:Name="label" Content="Choose a subject:" HorizontalAlignment="Left" Margin="47,29,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
+        <TextBox x:Name="numberBox" HorizontalAlignment="Left" Height="28" Margin="201,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="label_Copy" Content="How many questions?" HorizontalAlignment="Left" Margin="47,62,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="201,30,0,0" VerticalAlignment="Top" Width="113" Height="27">
             <ComboBoxItem Content="History"/>
         </ComboBox>
-        <ListBox x:Name="hwLstBox" HorizontalAlignment="Left" Height="306" Margin="433,33,0,0" VerticalAlignment="Top" Width="326" SelectionChanged="hwLstBox_SelectionChanged"/>
+        <ListBox x:Name="hwLstBox" HorizontalAlignment="Left" Height="370" Margin="345,29,0,0" VerticalAlignment="Top" Width="420" SelectionChanged="hwLstBox_SelectionChanged"/>
+        <TextBox x:Name="questionInputBox" HorizontalAlignment="Left" Height="68" Margin="47,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+        <Label x:Name="label1" Content="Write a question below:" HorizontalAlignment="Left" Margin="47,95,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="label1_Copy" Content="What is the correct answer?" HorizontalAlignment="Left" Margin="47,194,0,0" VerticalAlignment="Top" Width="165"/>
+        <TextBox x:Name="answerBox" HorizontalAlignment="Left" Height="30" Margin="47,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+        <Label x:Name="label1_Copy1" Content="Give one incorrect answer:" HorizontalAlignment="Left" Margin="47,255,0,0" VerticalAlignment="Top" Width="165"/>
+        <TextBox x:Name="incorrectAnswerBox" HorizontalAlignment="Left" Height="30" Margin="47,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
     </Grid>
 </Window>
