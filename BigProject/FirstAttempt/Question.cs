@@ -10,6 +10,22 @@ namespace FirstAttempt
     {
 
         public string Body { get; set; }
+        public string Answer { get; set; }
+        public string Subject { get; set; }
+
+        public Question()
+        {
+            Body = string.Empty;
+            Answer = string.Empty;
+            Subject = "Unlisted";
+        }
+
+        public Question (string body, string answer, string subject)
+        {
+            Body = body;
+            Answer = answer;
+            Subject = subject;
+        }
 
     }
 }

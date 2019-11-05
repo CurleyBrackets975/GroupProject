@@ -25,7 +25,12 @@ namespace FirstAttempt
         public MainWindow()
         {
             InitializeComponent();
-            //adfasdf
+            
+        }
+
+        private void generateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
