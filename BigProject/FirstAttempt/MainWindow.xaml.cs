@@ -30,5 +30,10 @@ namespace FirstAttempt
         {
 
         }
+
+        private void hwLstBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
