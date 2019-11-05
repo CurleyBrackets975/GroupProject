@@ -23,6 +23,7 @@ namespace FirstAttempt
         public MainWindow()
         {
             InitializeComponent();
+            //adfasdf
         }
     }
 }
