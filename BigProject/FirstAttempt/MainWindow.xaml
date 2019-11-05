@@ -13,6 +13,9 @@
         <Label x:Name="label_Copy" Content="How many questions?" HorizontalAlignment="Left" Margin="47,62,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="201,30,0,0" VerticalAlignment="Top" Width="113" Height="27">
             <ComboBoxItem Content="History"/>
+            <ComboBoxItem Content="Science"/>
+            <ComboBoxItem Content="Math"/>
+            <ComboBoxItem Content="English"/>
         </ComboBox>
         <ListBox x:Name="hwLstBox" HorizontalAlignment="Left" Height="370" Margin="345,29,0,0" VerticalAlignment="Top" Width="420" SelectionChanged="hwLstBox_SelectionChanged"/>
         <TextBox x:Name="questionInputBox" HorizontalAlignment="Left" Height="68" Margin="47,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
