@@ -11,7 +11,7 @@ namespace FirstAttempt
        
         public string Body { get; set; }
         public string Answer { get; set; }
-        public string WrongAnswer { get; set; }
+        public string[] WrongAnswers { get; set; }
         public string Subject { get; set; }
         
 
@@ -19,15 +19,15 @@ namespace FirstAttempt
         {
             Body = string.Empty;
             Answer = string.Empty;
-            WrongAnswer = string.Empty;
             Subject = "Unlisted";
         }
 
-        public Question (string body, string answer, string subject)
+        public Question (string body, string answer, string subject, string[] wrongAnswers)
         {
             Body = body;
             Answer = answer;
             Subject = subject;
+            WrongAnswers = wrongAnswers;
         }
 
     }

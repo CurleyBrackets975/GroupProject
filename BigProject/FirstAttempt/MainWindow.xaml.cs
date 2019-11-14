@@ -22,9 +22,13 @@ namespace FirstAttempt
     /// </summary>
     public partial class MainWindow : Window
     {
+        static string[] SUBJECTS = { "History", "Math", "English", "Science" };
         public MainWindow()
         {
-
+            foreach (string i in SUBJECTS)
+            {
+                CBXSubjects.Items.Add(i);
+            }
            
             InitializeComponent();
             
@@ -32,7 +36,7 @@ namespace FirstAttempt
 
         private void generateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            //Making this as a list for now but this will need to be 
         }
 
         private void hwLstBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
