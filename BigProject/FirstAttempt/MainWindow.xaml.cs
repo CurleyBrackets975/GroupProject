@@ -22,33 +22,47 @@ namespace FirstAttempt
     /// </summary>
     public partial class MainWindow : Window
     {
-        static string[] SUBJECTS = { "History", "Math", "English", "Science" };
+        //This will read from a JSON file by the end
+        static readonly string[] SUBJECTS = { "History", "Math", "English", "Science" };
+
+        //This will also be a JSON file later
+        static readonly List<Question> QUESTIONS = new List<Question>();
         public MainWindow()
         {
+            InitializeComponent();
+            
+            //add all the subjects to the form
             foreach (string i in SUBJECTS)
             {
                 CBXSubjects.Items.Add(i);
             }
-           
-            InitializeComponent();
-            
         }
 
-        private void generateBtn_Click(object sender, RoutedEventArgs e)
+        private void BTNAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-            //Making this as a list for now but this will need to be 
+            //generates question from inputs assuming perfect entry
+            Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','));
+            QUESTIONS.Add(temp);
+
+            //clear box to avoid simulated duplication and apply the legend
+            LBXHomework.Items.Clear();
+            LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
+
+            //add the whole list to the lbx
+            foreach (Question i in QUESTIONS)
+            {
+                LBXHomework.Items.Add(i.ToString());
+            }
         }
 
-        private void hwLstBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BTNGenerate_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //Question subject = new Question();
-            //subject.Subject = comboBox.Text;
-
-            //hwLstBox.Items.Add(subject.ToString());
-
-
+            //how we're goning to generate a homework of a specific length
+            for (int i = 0; i < Convert.ToInt32(TBXNumber.Text); i++)
+            {
+                
+            }
         }
     }
+
 }

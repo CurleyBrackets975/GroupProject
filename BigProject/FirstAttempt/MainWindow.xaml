@@ -11,18 +11,18 @@
         <Label x:Name="TBXNumQuestions" Content="How many questions?" HorizontalAlignment="Left" Margin="47,62,0,0" VerticalAlignment="Top" Height="28" Width="136"/>
         <Label x:Name="LBLQuestion" Content="Write a question below:" HorizontalAlignment="Left" Margin="47,95,0,0" VerticalAlignment="Top" Width="136"/>
         <Label x:Name="LBLAnswer" Content="What is the correct answer?" HorizontalAlignment="Left" Margin="47,194,0,0" VerticalAlignment="Top" Width="165"/>
-        <Label x:Name="LBLWrongAnswer" Content="Give one incorrect answer:" HorizontalAlignment="Left" Margin="47,255,0,0" VerticalAlignment="Top" Width="165"/>
+        <Label x:Name="LBLWrongAnswer" Content="Give a list of incorrect answers separated by commas:" HorizontalAlignment="Left" Margin="47,255,0,0" VerticalAlignment="Top" Width="293"/>
         
         <ComboBox x:Name="CBXSubjects" HorizontalAlignment="Left" Margin="201,30,0,0" VerticalAlignment="Top" Width="113" Height="27"/>
         
-        <ListBox x:Name="LBXHomework" HorizontalAlignment="Left" Height="370" Margin="345,29,0,0" VerticalAlignment="Top" Width="420" SelectionChanged="hwLstBox_SelectionChanged"/>
+        <ListBox x:Name="LBXHomework" HorizontalAlignment="Left" Height="370" Margin="345,29,0,0" VerticalAlignment="Top" Width="420"/>
         
         <TextBox x:Name="TBXNumber" HorizontalAlignment="Left" Height="28" Margin="201,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
         <TextBox x:Name="TBXQuestion" HorizontalAlignment="Left" Height="68" Margin="47,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
         <TextBox x:Name="TBXAnswer" HorizontalAlignment="Left" Height="30" Margin="47,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
         <TextBox x:Name="TBXWrongAnswer" HorizontalAlignment="Left" Height="30" Margin="47,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
         
-        <Button x:Name="BTNGenerate" Content="Generate" HorizontalAlignment="Left" Margin="47,332,0,0" VerticalAlignment="Top" Width="100" Click="generateBtn_Click" Height="35"/>
-        <Button x:Name="BTNAddQuestion" Content="Add Question" HorizontalAlignment="Left" Margin="214,332,0,0" VerticalAlignment="Top" Width="100" Click="generateBtn_Click" Height="35"/>
+        <Button x:Name="BTNGenerate" Content="Generate" HorizontalAlignment="Left" Margin="47,332,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="BTNGenerate_Click"/>
+        <Button x:Name="BTNAddQuestion" Content="Add Question" HorizontalAlignment="Left" Margin="214,332,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="BTNAddQuestion_Click"/>
     </Grid>
 </Window>

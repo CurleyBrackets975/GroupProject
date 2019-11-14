@@ -30,5 +30,19 @@ namespace FirstAttempt
             WrongAnswers = wrongAnswers;
         }
 
+        public override string ToString ()
+        {
+            string stringForm = $"{Subject}, {Body}, {Answer}";
+
+
+            
+            foreach (string i in WrongAnswers)
+            {
+                stringForm += $", {i}";
+            }
+
+            return stringForm;
+        }
+
     }
 }
