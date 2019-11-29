@@ -63,6 +63,11 @@ namespace FirstAttempt
                 
             }
         }
+
+        private void LBXHomework_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }

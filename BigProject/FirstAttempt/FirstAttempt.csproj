@@ -100,5 +100,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PikPng.com_wave-png_594145.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="http___pluspng.com_img-png_wave-background-png-wave-background-png-10-1680.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pngguru.com.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="http___pluspng.com_img-png_wave-background-png-wave-background-png-9-3000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="http___pluspng.com_img-png_wave-background-png--1230.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
