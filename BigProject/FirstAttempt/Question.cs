@@ -13,6 +13,7 @@ namespace FirstAttempt
         public string Answer { get; set; }
         public string[] WrongAnswers { get; set; }
         public string Subject { get; set; }
+        public int Chapter { get; set; }
         
 
         public Question()
@@ -22,17 +23,27 @@ namespace FirstAttempt
             Subject = "Unlisted";
         }
 
-        public Question (string body, string answer, string subject, string[] wrongAnswers)
+        public Question (string body, string answer, string subject, string[] wrongAnswers, int chapter)
         {
             Body = body;
             Answer = answer;
             Subject = subject;
             WrongAnswers = wrongAnswers;
+            Chapter = chapter;
+        }
+
+        //for incase they want us to make up random wrong answers
+        public Question (string body, string answer, string subject, int chapter)
+        {
+            Body = body;
+            Answer = answer;
+            Subject = subject;
+            Chapter = chapter
         }
 
         public override string ToString ()
         {
-            string stringForm = $"{Subject}, {Body}, {Answer}";
+            string stringForm = $"{Subject}, Chapter: {Chapter}, {Body}, {Answer}";
 
 
             
