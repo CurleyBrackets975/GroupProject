@@ -25,6 +25,7 @@ namespace FirstAttempt
         //This will read from a JSON file by the end
         static readonly string[] SUBJECTS = { "History", "Math", "English", "Science" };
 
+
         //This will also be a JSON file later
         static readonly List<Question> QUESTIONS = new List<Question>();
         public MainWindow()
@@ -41,23 +42,32 @@ namespace FirstAttempt
         private void BTNAddQuestion_Click(object sender, RoutedEventArgs e)
         {
             //generates question from inputs assuming perfect entry
-            Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','));
-            QUESTIONS.Add(temp);
+            //I tried to use the number of q
+            int UserNumofQuestions = Int32.Parse(TBXNumber.Text);
+            
+                {
+                    Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','));
+                    QUESTIONS.Add(temp);
 
-            //clear box to avoid simulated duplication and apply the legend
-            LBXHomework.Items.Clear();
-            LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
+                    //clear box to avoid simulated duplication and apply the legend
+                    LBXHomework.Items.Clear();
+                    LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
 
-            //add the whole list to the lbx
-            foreach (Question i in QUESTIONS)
-            {
-                LBXHomework.Items.Add(i.ToString());
-            }
+                    //add the whole list to the lbx
+                    foreach (Question i in QUESTIONS)
+                    {
+                        LBXHomework.Items.Add(i.ToString());
+                        TBXQuestion.Clear();
+                        TBXAnswer.Clear();
+                        TBXWrongAnswer.Clear();
+                    }
+                }
+           
         }
 
         private void BTNGenerate_Click(object sender, RoutedEventArgs e)
         {
-            //how we're goning to generate a homework of a specific length
+            //how we're going to generate a homework of a specific length
             for (int i = 0; i < Convert.ToInt32(TBXNumber.Text); i++)
             {
                 
