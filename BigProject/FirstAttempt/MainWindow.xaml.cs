@@ -32,10 +32,15 @@ namespace FirstAttempt
         {
             InitializeComponent();
 
-            using (StreamReader r = new StreamReader("file.json"))
+            using (StreamReader sr = new StreamReader("QuestionsJSON.txt"))
             {
-                string json = r.ReadToEnd();
-                QUESTIONS = JsonConvert.DeserializeObject<List<Question>>(json);
+                string[] line;
+                do
+                {
+                    line = sr.ReadLine().Split(',');
+                    string[] wrongAnswers = line[4].Split('|');
+                    Question temp = new Question(line[0], line[1], line[2], wrongAnswers, Convert.ToInt32(line[3]));
+                } while (sr.ReadLine() != null);
             }
 
             //add all the subjects to the form
@@ -52,6 +57,9 @@ namespace FirstAttempt
             if (!QUESTIONS.Contains(temp))
             {
                 QUESTIONS.Add(temp);
+                StreamWriter wr = new StreamWriter("QuestionsJSON.txt");
+                wr.WriteLine($"{{\n\"Body\" : \"{temp.Body}\",\n\"Answer\" : \"{temp.Answer}\",\n\"Subject\" : \"{temp.Subject}\",\n\"Chapter\" : \"{temp.Chapter}\",\n\"WrongAnswer\" : [\"{temp.WrongAnswerString()}\"]\n}}");
+
             }
             else
             {

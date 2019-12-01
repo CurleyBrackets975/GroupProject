@@ -55,5 +55,25 @@ namespace FirstAttempt
             return stringForm;
         }
 
+        public string WrongAnswerString()
+        {
+            string temp = string.Empty;
+
+            for (int i = 0; i < WrongAnswers.Length; i++)
+            {
+                temp += $"\"{WrongAnswers[i]}";
+
+                if (i != WrongAnswers.Length - 1)
+                {
+                    temp += "\",";
+                }
+                else
+                {
+                    temp += "\"";
+                }
+            }
+            return temp;
+        }
+
     }
 }
