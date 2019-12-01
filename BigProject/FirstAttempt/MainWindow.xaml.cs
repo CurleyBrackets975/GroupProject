@@ -170,9 +170,15 @@ namespace FirstAttempt
                     {
                         using (Process myProcess = new Process())
                         {
+                            string myDir = Directory.GetCurrentDirectory();
                             myProcess.StartInfo.UseShellExecute = false;
-                            myProcess.StartInfo.FileName = path;
-                            myProcess.StartInfo.CreateNoWindow = true;
+                            //Process.Start("IExplore.exe",path);
+                            Process.Start("Chrome.exe", myDir+ "\\"+path);
+                            
+
+
+                            //myProcess.StartInfo.FileName = "C:\\Users\\admin\\Source\\Repos\\GroupProject2\\BigProject\\FirstAttempt\\bin\\Debug"+path;
+                            // myProcess.StartInfo.CreateNoWindow = true;
                             myProcess.Start();
                         }
                     }
