@@ -26,7 +26,7 @@ namespace FirstAttempt
     {
 
         //This will read from a JSON file by the end
-        static readonly string[] SUBJECTS = { "History", "Math", "English", "Science" };
+        static readonly string[] SUBJECTS = { "History", "Math", "MIS", "B AD" };
 
 
 
@@ -132,6 +132,7 @@ namespace FirstAttempt
                 //If no subject is selected, then export all subjects 
                 if (CBXSubjects.Text == item.Subject || CBXSubjects.Text == "" && CBXYes.IsSelected)
                 {
+                    
                     HTML = HTML + "<Title>" + (TBXName) + "</Title>";
                     HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
                     HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
@@ -145,7 +146,7 @@ namespace FirstAttempt
                 }
                 else
                 {
-                    HTML = HTML + "<Title>" + (TBXName) + "</Title>";
+                    HTML = HTML + "<div>" + (TBXName.ToString()) + "</div>";
                     HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
                     HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
                     HTML = HTML + "<ol  font - size:12px; type='A';'>" + (item.Answer.ToString()) + "</ol>";
