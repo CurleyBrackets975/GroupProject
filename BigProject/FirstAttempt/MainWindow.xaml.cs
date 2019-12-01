@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using System.Diagnostics;
 
 namespace FirstAttempt
 {
@@ -90,18 +90,18 @@ namespace FirstAttempt
 
 
 
-            ////temporarily removing duplicate checking - Sabrina 12/1
-            //if (!QUESTIONS.Contains(temp))
-            //{
-            //    QUESTIONS.Add(temp);
-            //    StreamWriter wr = new StreamWriter("QuestionsJSON.txt");
-            //    wr.WriteLine($"{{\n\"Body\" : \"{temp.Body}\",\n\"Answer\" : \"{temp.Answer}\",\n\"Subject\" : \"{temp.Subject}\",\n\"Chapter\" : \"{temp.Chapter}\",\n\"WrongAnswer\" : [\"{temp.WrongAnswerString()}\"]\n}}");
-            //    MessageBox.Show("The question has been entered.");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The question submitted already exists");
-            //}
+            //temporarily removing duplicate checking - Sabrina 12/1
+            if (!QUESTIONS.Contains(temp))
+            {
+                QUESTIONS.Add(temp);
+                StreamWriter wr = new StreamWriter("QuestionsJSON.txt");
+                wr.WriteLine($"{{\n\"Body\" : \"{temp.Body}\",\n\"Answer\" : \"{temp.Answer}\",\n\"Subject\" : \"{temp.Subject}\",\n\"Chapter\" : \"{temp.Chapter}\",\n\"WrongAnswer\" : [\"{temp.WrongAnswerString()}\"]\n}}");
+                MessageBox.Show("The question has been entered.");
+            }
+            else
+            {
+                MessageBox.Show("The question submitted already exists");
+            }
 
             /* Old way of outputting specific questions 
             //clear box to avoid simulated duplication and apply the legend
@@ -123,34 +123,76 @@ namespace FirstAttempt
 
         private void BTNGenerate_Click(object sender, RoutedEventArgs e)
         {
+            int count = 0;
             string HTML ="<HTML>";
             foreach (Question item in QUESTIONS)
             {
-                HTML=HTML+ "<li>" + (item.Subject.ToString())+"</li>";
-                HTML = HTML + "<ul>";
-                HTML = HTML + "<li>" + (item.Chapter.ToString()) + "</li>";
-                HTML = HTML + "<li>" + (item.Body.ToString()) + "</li>";
-                HTML = HTML + "<li>" + (item.Answer.ToString()) + "</li>";
-                HTML = HTML + "<li>" + (item.WrongAnswers.ToString()) + "</li>";
+                //TODO: Add additional filtering as desired here
+                //If no subject is selected, then export all subjects 
+                if (CBXSubjects.Text == item.Subject || CBXSubjects.Text=="")
+                {
+                    HTML=HTML+ "<li>" + (item.Subject.ToString())+"</li>";
+                    HTML = HTML + "<ul>";
+                    HTML = HTML + "<li>" + (item.Chapter.ToString()) + "</li>";
+                    HTML = HTML + "<li>" + (item.Body.ToString()) + "</li>";
+                    HTML = HTML + "<li>" + (item.Answer.ToString()) + "</li>";
+
+                    foreach(string wronganswer in item.WrongAnswers)
+                    {
+                        HTML = HTML + "<li  style='color: red; font - size:12px;'> " + (wronganswer.ToString()) + " </li>";
+                    }
+                    count++;
+                }
+                
+                
+
                 HTML = HTML + "</ul>";
             }
             HTML = HTML + "</HTML>";
-            var path = "Questions.HTML";
-            using (StreamWriter sr = File.CreateText(path))
+
+            if (count == 0)
             {
-                sr.WriteLine(HTML);
-                sr.Close();
+                MessageBox.Show("No questions for this category found!");
+            }
+            else
+            {
+                var path = "Questions.HTML";
+
+                using (StreamWriter sr = File.CreateText(path))
+                {
+                    sr.WriteLine(HTML);
+                    sr.Close();
 
 
-                MessageBox.Show("HTML has been created.");
+                    MessageBox.Show("HTML has been created.");
+
+                    try
+                    {
+                        using (Process myProcess = new Process())
+                        {
+                            myProcess.StartInfo.UseShellExecute = false;
+                            myProcess.StartInfo.FileName = path;
+                            myProcess.StartInfo.CreateNoWindow = true;
+                            myProcess.Start();
+                        }
+                    }
+                    catch (Exception e2)
+                    {
+                        Console.WriteLine(e2.Message);
+                    }
+
+                }
 
             }
-            }
+        
+}
 
-            private void LBXHomework_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+private void LBXHomework_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
     }
 
 }
+
