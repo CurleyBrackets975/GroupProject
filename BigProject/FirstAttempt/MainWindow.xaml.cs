@@ -81,6 +81,7 @@ namespace FirstAttempt
             {
                 sr.WriteLine(json);
                 sr.Close();
+                
 
                 //Console.WriteLine(File.ReadAllText(QUESTIONS));
                 // MessageBox.Show("The question has been entered.");
@@ -98,10 +99,10 @@ namespace FirstAttempt
                 wr.WriteLine($"{{\n\"Body\" : \"{temp.Body}\",\n\"Answer\" : \"{temp.Answer}\",\n\"Subject\" : \"{temp.Subject}\",\n\"Chapter\" : \"{temp.Chapter}\",\n\"WrongAnswer\" : [\"{temp.WrongAnswerString()}\"]\n}}");
                 MessageBox.Show("The question has been entered.");
             }
-            else
-            {
-                MessageBox.Show("The question submitted already exists");
-            }
+            //else
+            //{
+            //    MessageBox.Show("The question submitted already exists");
+            //}
 
             /* Old way of outputting specific questions 
             //clear box to avoid simulated duplication and apply the legend
@@ -129,24 +130,33 @@ namespace FirstAttempt
             {
                 //TODO: Add additional filtering as desired here
                 //If no subject is selected, then export all subjects 
-                if (CBXSubjects.Text == item.Subject || CBXSubjects.Text=="")
+                if (CBXSubjects.Text == item.Subject || CBXSubjects.Text == "" && CBXYes.IsSelected)
                 {
-                    HTML=HTML+ "<li>" + (item.Subject.ToString())+"</li>";
-                    HTML = HTML + "<ul>";
-                    HTML = HTML + "<li>" + (item.Chapter.ToString()) + "</li>";
-                    HTML = HTML + "<li>" + (item.Body.ToString()) + "</li>";
-                    HTML = HTML + "<li>" + (item.Answer.ToString()) + "</li>";
+                    HTML = HTML + "<Title>" + (TBXName) + "</Title>";
+                    HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
+                    HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
+                    HTML = HTML + "<ol style='color: green; font - size:12px; type='A';'>" + (item.Answer.ToString()) + "</ol>";
 
-                    foreach(string wronganswer in item.WrongAnswers)
+                    foreach (string wronganswer in item.WrongAnswers)
                     {
-                        HTML = HTML + "<li  style='color: red; font - size:12px;'> " + (wronganswer.ToString()) + " </li>";
+                        HTML = HTML + "<ol  style='color: red; font - size:12px; type='a';'> " + (wronganswer.ToString()) + "</ol>";
                     }
                     count++;
                 }
-                
-                
+                else
+                {
+                    HTML = HTML + "<Title>" + (TBXName) + "</Title>";
+                    HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
+                    HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
+                    HTML = HTML + "<ol  font - size:12px; type='A';'>" + (item.Answer.ToString()) + "</ol>";
 
-                HTML = HTML + "</ul>";
+                    foreach (string wronganswer in item.WrongAnswers)
+                    {
+                        HTML = HTML + "<ol   font - size:12px; type='a';'> " + (wronganswer.ToString()) + "</ol>";
+                    }
+                    count++;
+                }
+
             }
             HTML = HTML + "</HTML>";
 
