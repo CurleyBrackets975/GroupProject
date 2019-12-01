@@ -46,9 +46,10 @@ namespace FirstAttempt
             int UserNumofQuestions = Int32.Parse(TBXNumber.Text);
             
                 {
-                    Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','));
+                    Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','), Convert.ToInt32(TBXChapter.Text));
                     QUESTIONS.Add(temp);
 
+                    /* Old way of outputting specific questions 
                     //clear box to avoid simulated duplication and apply the legend
                     LBXHomework.Items.Clear();
                     LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
@@ -61,6 +62,7 @@ namespace FirstAttempt
                         TBXAnswer.Clear();
                         TBXWrongAnswer.Clear();
                     }
+                    */
                 }
            
         }

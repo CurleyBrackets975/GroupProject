@@ -38,7 +38,7 @@ namespace FirstAttempt
             Body = body;
             Answer = answer;
             Subject = subject;
-            Chapter = chapter
+            Chapter = chapter;
         }
 
         public override string ToString ()
