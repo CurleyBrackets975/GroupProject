@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows;
 
 namespace FirstAttempt
 {
@@ -42,35 +43,70 @@ namespace FirstAttempt
 
         }
 
-        public Homework(string subject, string name, int numQuestions)
+        public Homework(string subject,string name, int numQuestions)
         {
-            Subject = string.Empty;
-            Name = string.Empty;
-            Year = DateTime.Today.Year;
+            if (getQuestionsBySubject(subject).Count > numQuestions)
+            {
+                Subject = subject;
+                Name = name;
+                Year = DateTime.Today.Year;
 
-            if (FALL.Contains(DateTime.Today.Month.ToString().ToLower()))
-            {
-                Semester = "Fall";
-            }
-            else if (SPRING.Contains(DateTime.Today.Month.ToString().ToLower()))
-            {
-                Semester = "Spring";
+                if (FALL.Contains(DateTime.Today.Month.ToString().ToLower()))
+                {
+                    Semester = "Fall";
+                }
+                else if (SPRING.Contains(DateTime.Today.Month.ToString().ToLower()))
+                {
+                    Semester = "Spring";
+                }
+                else
+                {
+                    Semester = "Summer";
+                }
+
+                for (int i = 0; i < numQuestions; i++)
+                {
+                    Questions.Add(this.getQuestion());
+                }
             }
             else
             {
-                Semester = "Summer";
+                MessageBox.Show("There are not enough unique questions of that subject.");
+            }
+        }
+
+        private List<Question> getQuestionsBySubject(string subject)
+        {
+            List<Question> sortedBySubject = new List<Question>();
+
+            foreach (Question q in Questions)
+            {
+                if (q.Subject == this.Subject)
+                {
+                    sortedBySubject.Add(q);
+                }
             }
 
-            for (int i = 0; i < numQuestions; i++)
-            {
-                Questions.Add(this.getQuestion());
-            }
+            return sortedBySubject;
         }
 
         //this method will get a question with the homeworks subject
         private Question getQuestion ()
         {
-            return null;
+            Random r = new Random();
+            List<Question> temp = getQuestionsBySubject(this.Subject);
+            int number = r.Next(0, temp.Count() + 1);
+            if (!Questions.Contains(temp[number]))
+            {
+                return temp[number];
+            }
+            else
+            {
+                return this.getQuestion();
+            }
+
+
+
         }
 
         public void printHomework()

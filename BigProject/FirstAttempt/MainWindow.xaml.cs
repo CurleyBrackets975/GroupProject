@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using System.IO;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace FirstAttempt
 {
@@ -27,11 +28,17 @@ namespace FirstAttempt
 
 
         //This will also be a JSON file later
-        static readonly List<Question> QUESTIONS = new List<Question>();
+        static List<Question> QUESTIONS = new List<Question>();
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.GetAsync($"https://daltonnewport975.github.io/assets/QuestionsJSON.txt").Result;
+                var content = response.Content.ReadAsStringAsync().Result;
+                QUESTIONS = JsonConvert.DeserializeObject<List<Question>>(content);
+            }
             //add all the subjects to the form
             foreach (string i in SUBJECTS)
             {
@@ -41,39 +48,38 @@ namespace FirstAttempt
 
         private void BTNAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-            //generates question from inputs assuming perfect entry
-            //I tried to use the number of q
-            int UserNumofQuestions = Int32.Parse(TBXNumber.Text);
-            
-                {
-                    Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','), Convert.ToInt32(TBXChapter.Text));
-                    QUESTIONS.Add(temp);
+            //generates question from inputs assuming perfect entry            
+            Question temp = new Question(TBXQuestion.Text, TBXAnswer.Text, CBXSubjects.Text, TBXWrongAnswer.Text.Split(','), Convert.ToInt32(TBXChapter.Text));
+            if (!QUESTIONS.Contains(temp))
+            {
+                QUESTIONS.Add(temp);
+            }
+            else
+            {
+                MessageBox.Show("The question submitted already exists");
+            }
 
-                    /* Old way of outputting specific questions 
-                    //clear box to avoid simulated duplication and apply the legend
-                    LBXHomework.Items.Clear();
-                    LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
+            /* Old way of outputting specific questions 
+            //clear box to avoid simulated duplication and apply the legend
+            LBXHomework.Items.Clear();
+            LBXHomework.Items.Add("Subject, Question, Answer, Wrong Answers");
 
-                    //add the whole list to the lbx
-                    foreach (Question i in QUESTIONS)
-                    {
-                        LBXHomework.Items.Add(i.ToString());
-                        TBXQuestion.Clear();
-                        TBXAnswer.Clear();
-                        TBXWrongAnswer.Clear();
-                    }
-                    */
-                }
+            //add the whole list to the lbx
+            foreach (Question i in QUESTIONS)
+            {
+                LBXHomework.Items.Add(i.ToString());
+                TBXQuestion.Clear();
+                TBXAnswer.Clear();
+                TBXWrongAnswer.Clear();
+            }
+            */
+                
            
         }
 
         private void BTNGenerate_Click(object sender, RoutedEventArgs e)
         {
-            //how we're going to generate a homework of a specific length
-            for (int i = 0; i < Convert.ToInt32(TBXNumber.Text); i++)
-            {
-                
-            }
+            Homework temp = new Homework(CBXSubjects.SelectedValue.ToString(), TBXName.Text, Convert.ToInt32(TBXNumber.Text));
         }
 
         private void LBXHomework_SelectionChanged(object sender, SelectionChangedEventArgs e)
