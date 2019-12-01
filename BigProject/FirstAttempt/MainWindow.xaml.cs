@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace FirstAttempt
 {
@@ -33,12 +32,12 @@ namespace FirstAttempt
         {
             InitializeComponent();
 
-            using (HttpClient client = new HttpClient())
+            using (StreamReader r = new StreamReader("file.json"))
             {
-                var response = client.GetAsync($"https://daltonnewport975.github.io/assets/QuestionsJSON.txt").Result;
-                var content = response.Content.ReadAsStringAsync().Result;
-                QUESTIONS = JsonConvert.DeserializeObject<List<Question>>(content);
+                string json = r.ReadToEnd();
+                QUESTIONS = JsonConvert.DeserializeObject<List<Question>>(json);
             }
+
             //add all the subjects to the form
             foreach (string i in SUBJECTS)
             {
