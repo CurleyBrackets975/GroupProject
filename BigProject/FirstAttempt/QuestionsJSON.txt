@@ -1,0 +1,13 @@
+ {"Questions":[{
+"Body":"Which country did the USSR invade in 1979?",
+"Answer" : "Afghanistan",
+"Subject" : "HIST",
+"Chapter" : "1",
+"WrongAnswer": ["Iraq","China","Iran"]
+},{
+"Body" : "A firm is attempting to break into an international market. It easily established alliances in that foreign market and was able to successfully expand. What concepts helped the firm with its transition?",
+"Answer" : "Social capital",
+"Subject" : "B AD",
+"Chapter" : "1",
+"WrongAnswer" : ["Innovations", "Intellectual capital", "Corporate culture"]
+}]}
