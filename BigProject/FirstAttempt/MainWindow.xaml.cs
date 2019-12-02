@@ -142,7 +142,7 @@ namespace FirstAttempt
                     sr.WriteLine(HTML);
                     sr.Close();
 
-                    MessageBox.Show("HTML has been created! Will now open your browser.");
+                    MessageBox.Show("An HTML file has been created! It will now open in your browser.");
                     //this is the code for how the html opens on any computer as long as the Questions.HTML file is in the debug folder
                     try
                     {
