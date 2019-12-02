@@ -130,33 +130,42 @@ namespace FirstAttempt
             {
                 //TODO: Add additional filtering as desired here
                 //If no subject is selected, then export all subjects 
-                if (CBXSubjects.Text == item.Subject || CBXSubjects.Text == "" && CBXYes.IsSelected)
+                if (CBXSubjects.Text == item.Subject || CBXSubjects.Text == "")
                 {
-                    
-                    HTML = HTML + "<Title>" + (TBXName) + "</Title>";
-                    HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
-                    HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
-                    HTML = HTML + "<ol style='color: green; font - size:12px; type='A';'>" + (item.Answer.ToString()) + "</ol>";
 
-                    foreach (string wronganswer in item.WrongAnswers)
+                    HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
+                    HTML = HTML + "<div>" + (count + 1).ToString() + ". " + (item.Body.ToString()) + "</div>";
+                    HTML = HTML + "<ul>";
+                    //  HTML = HTML + "<li style='color: green; font - size:12px;'>" + (item.Answer.ToString());
+
+                    if (CBXYes.IsSelected)
                     {
-                        HTML = HTML + "<ol  style='color: red; font - size:12px; type='a';'> " + (wronganswer.ToString()) + "</ol>";
+                        HTML = HTML + "<li style='color: green; font - size:12px;'>" + (item.Answer.ToString());
+
                     }
+                    else
+                    {
+                        HTML = HTML + "<li style= font - size:12px;'>" + (item.Answer.ToString());
+                    }
+                    foreach (string wronganswer in item.WrongAnswers)
+
+                    {
+                        if (CBXYes.IsSelected)
+                        {
+                            HTML = HTML + "<li  style='color: red; font - size:12px; '> " + (wronganswer.ToString()) + "</Li>";
+                        }
+                        else
+                        {
+
+                            HTML = HTML + "<li  style= font - size:12px; '> " + (wronganswer.ToString()) + "</Li>";
+                        }
+
+                    }
+
+                    HTML = HTML + "</ul>";
                     count++;
                 }
-                else
-                {
-                    HTML = HTML + "<div>" + (TBXName.ToString()) + "</div>";
-                    HTML = HTML + "<div style='font - size:20px;'>" + (item.Subject.ToString()) + ": Chapter " + (item.Chapter.ToString()) + "<br>" + "</div>";
-                    HTML = HTML + "<div>" + (item.Body.ToString()) + "</div>";
-                    HTML = HTML + "<ol  font - size:12px; type='A';'>" + (item.Answer.ToString()) + "</ol>";
 
-                    foreach (string wronganswer in item.WrongAnswers)
-                    {
-                        HTML = HTML + "<ol   font - size:12px; type='a';'> " + (wronganswer.ToString()) + "</ol>";
-                    }
-                    count++;
-                }
 
             }
             HTML = HTML + "</HTML>";
