@@ -14,7 +14,6 @@
         <Label Name="LBLChapter" Content="Chapter (Number Please):" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="585,67,0,0" Width="165" Height="30" FontWeight="Bold"/>
         <Label Name="LBLSubject2" Content="Subject:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="432,67,0,0" Width="100" Height="27" FontWeight="Bold"/>
         <Label x:Name="LBLSubject" Content="Choose a subject:" HorizontalAlignment="Left" Margin="29,67,0,0" VerticalAlignment="Top" Height="27" Width="147" FontWeight="Bold"/>
-        <Label x:Name="LBLNumQuestions" Content="How many questions?" HorizontalAlignment="Left" Margin="29,133,0,0" VerticalAlignment="Top" Height="27" Width="147" FontWeight="Bold"/>
         <Label x:Name="LBLQuestion" Content="Write a question below:" HorizontalAlignment="Left" Margin="432,130,0,0" VerticalAlignment="Top" Width="148" Height="26" FontWeight="Bold"/>
         <Label x:Name="LBLAnswer" Content="What is the correct answer?" HorizontalAlignment="Left" Margin="432,232,0,0" VerticalAlignment="Top" Width="179" Height="25" FontWeight="Bold"/>
         <Label x:Name="LBLWrongAnswer" Content="Give a list of incorrect answers separated by commas:" HorizontalAlignment="Left" Margin="432,296,0,0" VerticalAlignment="Top" Width="318" Height="25" FontWeight="Bold"/>
@@ -25,7 +24,6 @@
         <TextBox Name="TBXName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,224,0,0" Width="171" Height="27"/>
         <TextBox Name="TBXChapter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,102,0,0" Width="148" Height="29"/>
         <TextBox Name="TBXSubject" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="432,102,0,0" Width="148" Height="29"/>
-        <TextBox x:Name="TBXNumber" HorizontalAlignment="Left" Height="27" Margin="29,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
         <TextBox x:Name="TBXQuestion" HorizontalAlignment="Left" Height="66" Margin="432,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318"/>
         <TextBox x:Name="TBXAnswer" HorizontalAlignment="Left" Height="29" Margin="432,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318"/>
         <TextBox x:Name="TBXWrongAnswer" HorizontalAlignment="Left" Height="30" Margin="432,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318"/>
